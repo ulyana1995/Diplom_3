@@ -1,6 +1,7 @@
 from pages.login_page import LoginPage
 from pages.forgot_password_page import ForgotPage
 from pages.reset_password_page import ResetPasswordPage
+from utils.helpers import generate_random_email
 import allure
 
 class TestRecoveryPasswordPage:
@@ -22,7 +23,8 @@ class TestRecoveryPasswordPage:
             assert forgot_page.recovery_button_displayed(), "Кнопка 'Восстановить' не отобразилось"
 
     @allure.title("Переход на страницу сброса пароля после ввода email и клика на кнопку 'Восстановить'")
-    def test_forgot_password_opens_reset_password_page(self, driver, user_email):
+    def test_forgot_password_opens_reset_password_page(self, driver):
+        user_email = generate_random_email()
         forgot_page = ForgotPage(driver)
         with allure.step("Открываем страницу восстановления пароля"):
             forgot_page.open()
@@ -41,7 +43,8 @@ class TestRecoveryPasswordPage:
             assert reset_password_page.password_field_displayed(), "Поле 'Пароль' не отобразилось"
 
     @allure.title("Поле пароля становится активным и подсвечивается при клике на иконку показать/скрыть")
-    def test_show_password_icon_highlights_password_field(self, driver, user_email):
+    def test_show_password_icon_highlights_password_field(self, driver):
+        user_email = generate_random_email()
         forgot_page = ForgotPage(driver)
         with allure.step("Открываем страницу восстановления пароля"):
             forgot_page.open()

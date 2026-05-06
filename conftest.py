@@ -28,10 +28,6 @@ def driver(request):
         driver.quit()
 
 @pytest.fixture
-def user_email():
-    return generate_random_email()
-
-@pytest.fixture
 def created_user():
     with allure.step("Генерация данных пользователя"):
         user_data = generate_user_data()

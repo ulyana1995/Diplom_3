@@ -36,7 +36,7 @@ class ConstructorPage(BasePage):
         return int(self.find_visible_element(ConstructorPageLocators.INGREDIENT_COUNTER).text)
 
     def _drag_and_drop_js(self, source, target):
-        self.driver.execute_script("""
+        self.execute_script("""
             const source = arguments[0];
             const target = arguments[1];
 

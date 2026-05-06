@@ -54,3 +54,6 @@ class BasePage:
     def wait_until(self, condition, timeout=TIMEOUT):
         return WebDriverWait(self.driver, timeout).until(condition)
     
+    def execute_script(self, script, *args):
+        return self.driver.execute_script(script, *args)
+    
